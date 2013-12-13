@@ -6,114 +6,89 @@ Distributed under terms of the MIT license.
 ###
 angular.module('five', [
   'ui.bootstrap'
-  'highcharts-ng'
 ])
 FiveCtrl = (scope, log)->
-  scope.START = 0
-  scope.END = 1
-  scope.SELECT = 2
-  scope.INPUT = 3
-  scope.CHECK = 4
+  scope.START = START
+  scope.END = END
+  scope.SELECT = SELECT
+  scope.INPUT = INPUT
+  scope.CHECK = CHECK
   scope.name = ''
-  scope.page = [
-    {
-      type: scope.START
-      title: '五行性理测试'
-      p: '根据王善人凤仪公的《性理集成》测试五行性理'
-    }
-    {
-      type: scope.SELECT
-      title: '对谁进行测试？'
-      p: '由于“医不自医”自己无法看清自己的原因，你需要选择'
-      prev: true
-      next: true
-      items: [
-        '自己'
-        '亲友'
-      ]
-    }
-    {
-      type: scope.INPUT
-      title: '请输入测试人的称呼'
-      p: '测试结果上显示的姓名'
-      prev: true
-      next: true
-    }
-    {
-      type: scope.CHECK
-      title: "的面部特征有那些？"
-      p: '查看一下面不特征，选择出合适的多个选项'
-      prev: true
-      next: true
-      items: [
-        {l: '长瘦', v: '木'}
-        {l: '露骨', v: '木'}
-        {l: '上宽下窄', v: '木'}
-        {l: '上尖中宽', v: '火'}
-        {l: '面丰满', v: '火'}
-        {l: '面丰厚', v: '土'}
-        {l: '方脸', v: '土'}
-        {l: '唇厚', v: '土'}
-        {l: '面长方', v: '金'}
-        {l: '颧稍高', v: '金'}
-        {l: '唇薄齿利', v: '金'}
-        {l: '眉清目秀', v: '金'}
-        {l: '面形肥', v: '水'}
-        {l: '面漫团', v: '水'}
-        {l: '面下稍宽', v: '水'}
-        {l: '眉粗', v: '水'}
-        {l: '目大', v: '水'}
-      ]
-    }
-    {
-      type: scope.END
-      title: '测试结果'
-      p: '本测试结果仅供参考'
-      prev: true
-    }
-  ]
+  scope.page = PAGE
   scope.num = 0
+  scope.error = false
   scope.$watch 'num', (n, o)->
     scope.p = scope.page[n]
-    scope.count()
+    if scope.p.type == END
+      scope.count()
   scope.next = ->
-    num += 1
+    scope.error = false
+    if scope.p.type == SELECT and not scope.p.value
+      scope.error = true
+      return
+    else if scope.p.type == INPUT and not scope.f_name.$valid
+      scope.error = true
+      $('#i_name').focus()
+      return
+    scope.num += 1
+
+  scope.prev = ->
+    scope.num -= 1
   scope.count = ->
-    scope.report =
-      '金': 0
+    report =
       '木': 0
-      '水': 0
       '火': 0
       '土': 0
+      '金': 0
+      '水': 0
     for p in scope.page
-      if p.type == scope.CHECK
+      if p.type == CHECK
         for i in p.items
           if i['s']
-            scope.report[i.v] += 1
-  scope.chartConfig =
-    chart:
-      polar: true
-    title:
-      text: '五行测试结果'
-    pane:
-        startAngle: 0
-        endAngle: 360
-    xAxis:
-      tickInterval: 72
-      min: 0
-      max: 360
-      labels:
+            report[i.v] += 1
+    chartConfig =
+      chart:
+        polar: true
+      title:
+        text: "#{scope.name}的五行"
+      pane:
+          startAngle: 0
+          endAngle: 360
+      xAxis:
+        tickInterval: 72
+        min: 0
+        max: 360
+        labels:
+          formatter: ->
+            {0:'木',72:'火',144:'土',216:'金',288:'水'}[this.value]
+      tooltip:
         formatter: ->
-          {0:'金',72:'木',144:'木',216:'木',288:'木'}[this.value]
-    plotOptions:
-      series:
-        pointStart: 0
-        pointInterval: 72
-    series: [
-      type: 'area'
-      name: '五行测试'
-      data: [5, 3, 7, 3, 6]
-    ]
-  $('#container').highcharts(scope.chartConfig)
+          "#{scope.name}的#{{0:'木',72:'火',144:'土',216:'金',288:'水'}[this.x]}性得分<br/><b>#{this.y}</b>"
+      plotOptions:
+        series:
+          pointStart: 0
+          pointInterval: 72
+      legend:
+        enabled: false
+      lang:
+        printChart: '打印测试结果'
+        downloadPNG: '下载PNG图片',
+        downloadJPEG: '下载JPEG图片',
+        downloadPDF: '下载PDF文档',
+        downloadSVG: '下载SVG矢量图片',
+        contextButtonTitle: '测试结果输出'
+      series: [
+        type: 'area'
+        name: scope.name
+        data: [
+          report['木']
+          report['火']
+          report['土']
+          report['金']
+          report['水']
+        ]
+      ]
+    $('#container').highcharts(chartConfig)
+    $("tspan:contains('Highcharts.com')").remove()
 
 FiveCtrl.$inject = ['$scope', '$log']

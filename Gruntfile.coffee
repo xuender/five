@@ -22,22 +22,23 @@ module.exports = (grunt)->
         part: 'patch'
       files: [ 'package.json' ]
     copy:
-      highchartsNg:
-        files: [
-          cwd: 'bower_components/highcharts-ng/src/directives/'
-          src: [
-            'highcharts-ng.js'
-          ]
-          dest: 'dist/js/'
-          expand: true
-          filter: 'isFile'
-        ]
       highcharts:
         files: [
           cwd: 'bower_components/highcharts/'
           src: [
             'highcharts.js'
             'highcharts-more.js'
+            'modules/exporting.js'
+          ]
+          dest: 'dist/js/'
+          expand: true
+          filter: 'isFile'
+        ]
+      highchartsModules:
+        files: [
+          cwd: 'bower_components/highcharts/modules/'
+          src: [
+            'exporting.js'
           ]
           dest: 'dist/js/'
           expand: true
@@ -130,6 +131,7 @@ module.exports = (grunt)->
       index:
         files:
           'dist/js/index.min.js': [
+            'src/data.coffee'
             'src/index.coffee'
           ]
     uglify:

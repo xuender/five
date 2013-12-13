@@ -11,8 +11,6 @@
     "angular-bootstrap": "0.7.0",
     "angular-mocks": "~1.2.4",
     "font-awesome": "~4.0.3",
-    "highcharts-ng": "*",
-    "highcharts": "~3.0.7",
-    "js-utils": "~1.0.16"
+    "highcharts": "~3.0.7"
   }
 }
