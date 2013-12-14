@@ -30,7 +30,6 @@ module.exports = (grunt)->
           src: [
             'highcharts.js'
             'highcharts-more.js'
-            'modules/exporting.js'
           ]
           dest: 'dist/js/'
           expand: true
@@ -160,8 +159,7 @@ module.exports = (grunt)->
       index:
         src: [
           'index.html'
-          'js/*.min.js'
-          'js/modules/*.js'
+          'js/*.js'
           'css/*.css'
         ]
         dest: 'dist/manifest.appcache'
