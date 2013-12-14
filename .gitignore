@@ -1,3 +1,4 @@
+.grunt/
 bower_components/
 node_modules/
 coverage/
@@ -5,7 +6,6 @@ dist/
 docs/
 logs/
 *~
-*.min.js
 .idea
 .zcache/
 .DS_Store
