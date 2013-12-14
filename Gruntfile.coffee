@@ -1,16 +1,17 @@
 module.exports = (grunt)->
-  grunt.loadNpmTasks('grunt-contrib-clean')
-  grunt.loadNpmTasks('grunt-contrib-concat')
-  grunt.loadNpmTasks('grunt-contrib-uglify')
-  grunt.loadNpmTasks('grunt-contrib-watch')
-  grunt.loadNpmTasks('grunt-contrib-copy')
-  grunt.loadNpmTasks('grunt-karma')
-  grunt.loadNpmTasks('grunt-contrib-coffee')
-  grunt.loadNpmTasks('grunt-coffeelint')
-  grunt.loadNpmTasks('grunt-contrib-cssmin')
-  grunt.loadNpmTasks('grunt-contrib-htmlmin')
-  grunt.loadNpmTasks('grunt-shell')
-  grunt.loadNpmTasks('grunt-bumpx')
+  grunt.loadNpmTasks 'grunt-contrib-clean'
+  grunt.loadNpmTasks 'grunt-contrib-concat'
+  grunt.loadNpmTasks 'grunt-contrib-uglify'
+  grunt.loadNpmTasks 'grunt-contrib-watch'
+  grunt.loadNpmTasks 'grunt-contrib-copy'
+  grunt.loadNpmTasks 'grunt-karma'
+  grunt.loadNpmTasks 'grunt-contrib-coffee'
+  grunt.loadNpmTasks 'grunt-coffeelint'
+  grunt.loadNpmTasks 'grunt-contrib-cssmin'
+  grunt.loadNpmTasks 'grunt-contrib-htmlmin'
+  grunt.loadNpmTasks 'grunt-shell'
+  grunt.loadNpmTasks 'grunt-bumpx'
+  grunt.loadNpmTasks 'grunt-manifest'
 
   grunt.initConfig(
     pkg:
@@ -154,6 +155,18 @@ module.exports = (grunt)->
         src: ['*.css', '!*.min.css'],
         dest: 'dist/css/',
         ext: '.min.css'
+    manifest:
+      options:
+        basePath: 'dist/'
+        network: ['http://*', 'https://*']
+      index:
+        src: [
+          'index.html'
+          'js/*.min.js'
+          'js/modules/*.js'
+          'css/*.css'
+        ]
+        dest: 'dist/manifest.appcache'
     watch:
       html:
         files: [
@@ -190,6 +203,7 @@ module.exports = (grunt)->
   grunt.registerTask('dist', '打包', [
     'dev'
     'uglify'
+    'manifest'
   ])
   grunt.registerTask('deploy', '发布', [
     'dist'
