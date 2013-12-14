@@ -1,11 +1,7 @@
 .grunt/
 bower_components/
 node_modules/
-coverage/
 dist/
-docs/
-logs/
-*~
 .idea
 .zcache/
-.DS_Store
+*~
