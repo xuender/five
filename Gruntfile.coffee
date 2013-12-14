@@ -24,13 +24,22 @@ module.exports = (grunt)->
         part: 'patch'
       files: [ 'package.json' ]
     copy:
+      root:
+        files: [
+          cwd: 'src/'
+          src: [
+            '.gitignore'
+          ]
+          dest: 'dist/'
+          expand: true
+          filter: 'isFile'
+        ]
       highcharts:
         files: [
           cwd: 'bower_components/highcharts/'
           src: [
             'highcharts.js'
             'highcharts-more.js'
-            'modules/exporting.js'
           ]
           dest: 'dist/js/'
           expand: true
@@ -113,17 +122,6 @@ module.exports = (grunt)->
           expand: true
           filter: 'isFile'
         ]
-      utils:
-        files: [
-          cwd: 'bower_components/js-utils/js/'
-          src: [
-            'js-utils.min.js'
-            'chrome.min.js'
-          ]
-          dest: 'dist/js/'
-          expand: true
-          filter: 'isFile'
-        ]
     coffee:
       options:
         bare: true
@@ -160,8 +158,7 @@ module.exports = (grunt)->
       index:
         src: [
           'index.html'
-          'js/*.min.js'
-          'js/modules/*.js'
+          'js/*.js'
           'css/*.css'
         ]
         dest: 'dist/manifest.appcache'
@@ -201,11 +198,11 @@ module.exports = (grunt)->
     'htmlmin'
     'cssmin'
     'coffee'
+    'manifest'
   ])
   grunt.registerTask('dist', '打包', [
     'dev'
     'uglify'
-    'manifest'
   ])
   grunt.registerTask('deploy', '发布', [
     'dist'

@@ -1,0 +1,10 @@
+.grunt
+bower_components/
+node_modules/
+dist/
+docs/
+logs/
+*~
+.idea
+.zcache/
+.DS_Store
