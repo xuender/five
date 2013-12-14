@@ -12,6 +12,7 @@ module.exports = (grunt)->
   grunt.loadNpmTasks 'grunt-shell'
   grunt.loadNpmTasks 'grunt-bumpx'
   grunt.loadNpmTasks 'grunt-manifest'
+  grunt.loadNpmTasks 'grunt-gh-pages'
 
   grunt.initConfig(
     pkg:
@@ -50,8 +51,6 @@ module.exports = (grunt)->
           cwd: 'bower_components/angular/'
           src: [
             'angular.min.js'
-            'angular.js'
-            'angular.min.js.map'
           ]
           dest: 'dist/js/'
           expand: true
@@ -82,7 +81,6 @@ module.exports = (grunt)->
           cwd: 'bower_components/jquery/'
           src: [
             'jquery.min.js'
-            'jquery.min.map'
           ]
           dest: 'dist/js/'
           expand: true
@@ -167,6 +165,10 @@ module.exports = (grunt)->
           'css/*.css'
         ]
         dest: 'dist/manifest.appcache'
+    'gh-pages':
+      options:
+        base: 'dist'
+      src: '**/*'
     watch:
       html:
         files: [
@@ -208,5 +210,6 @@ module.exports = (grunt)->
   grunt.registerTask('deploy', '发布', [
     'dist'
     'bump'
+    'gh-pages'
   ])
   grunt.registerTask('default', '默认(打包)', ['dist'])
