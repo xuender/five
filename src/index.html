@@ -17,7 +17,10 @@
         <h1>五行性理测试</h1>
         <p>根据王善人凤仪公的《性理集成》测试五行性理</p>
         <div class="btn-group pull-right">
-          <button class="btn btn-primary btn-large" ng-click="num = 1">测试开始</button>
+          <button class="btn btn-primary btn-large" ng-click="num = 1">
+            <i class="fa fa-play"></i>
+            测试开始
+          </button>
         </div><!-- btn-group -->
       </div><!-- START -->
       <div class="hero-unit" ng-hide="p.type == END || p.type == START">
@@ -28,7 +31,10 @@
             <input type="text" name="name" maxlength="200" placeholder="请输入..." id="i_name"
              ng-maxlength="200" ng-minlength="1" ng-model="name" required/>
             <div ng-show="error">
-              <div class="alert alert-error"  ng-show="f_name.name.$error.required">必填</div>
+              <div class="alert alert-error"  ng-show="f_name.name.$error.required">
+                <i class="fa fa-exclamation-triangle"></i>
+                必填
+              </div>
             </div>
           </form>
         </div>
@@ -42,17 +48,29 @@
               {{ i }}
             </button>
             <div ng-show="error">
-              <div class="alert alert-error">必选</div>
+              <div class="alert alert-error">
+                <i class="fa fa-exclamation-triangle"></i>
+                必选
+              </div>
             </div><!-- error -->
         </div><!-- btn-group -->
         <div class="btn-group pull-right">
-          <button class="btn btn-large pull-right" ng-click="prev()">返回</button>
-          <button class="btn btn-large btn-primary pull-right" ng-click="next()">继续</button>
+          <button class="btn btn-large btn-primary pull-right" ng-click="next()">
+            <i class="fa fa-angle-double-right"></i>
+            继续
+          </button>
+          <button class="btn btn-large pull-right" ng-click="prev()">
+            <i class="fa fa-angle-double-left"></i>
+            返回
+          </button>
         </div><!-- btn-group -->
       </div><!-- hero-unit -->
       <div ng-show="p.type == END">
         <div id="container" style="min-width: 410px; max-width: 500px; height: 450px; margin: 0 auto"></div>
-          <button class="btn btn-primary btn-large pull-right" ng-click="num = 0">重新开始</button>
+        <button class="btn btn-success btn-large pull-right" ng-click="num = 0">
+          <i class="fa fa-reply"></i>
+          重新开始
+        </button>
       </div><!-- END -->
     </div><!-- container -->
     <div class="footer">

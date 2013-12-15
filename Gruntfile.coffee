@@ -149,6 +149,7 @@ module.exports = (grunt)->
         src: [
           'index.html'
           'js/*.js'
+          'fonts/*'
           'css/*.css'
         ]
         dest: 'dist/manifest.appcache'
@@ -161,17 +162,17 @@ module.exports = (grunt)->
         files: [
           'src/*.html'
         ]
-        tasks: ['htmlmin']
+        tasks: ['htmlmin', 'manifest']
       css:
         files: [
           'src/*.css'
         ]
-        tasks: ['cssmin']
+        tasks: ['cssmin', 'manifest']
       coffee:
         files: [
           'src/*.coffee'
         ]
-        tasks: ['coffee']
+        tasks: ['coffee', 'manifest']
     karma:
       options:
         configFile: 'karma.conf.js'
