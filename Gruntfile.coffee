@@ -112,17 +112,6 @@ module.exports = (grunt)->
           expand: true
           filter: 'isFile'
         ]
-      utils:
-        files: [
-          cwd: 'bower_components/js-utils/js/'
-          src: [
-            'js-utils.min.js'
-            'chrome.min.js'
-          ]
-          dest: 'dist/js/'
-          expand: true
-          filter: 'isFile'
-        ]
     coffee:
       options:
         bare: true
