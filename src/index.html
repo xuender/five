@@ -23,7 +23,7 @@
           </button>
         </div><!-- btn-group -->
       </div><!-- START -->
-      <div class="hero-unit" ng-hide="p.type == END || p.type == START">
+      <div class="hero-unit ng-hide" ng-hide="p.type == END || p.type == START">
         <h1><span ng-show="p.type == CHECK">{{ name }}</span>{{ p.title }}</h1>
         <p>{{ p.p }}</p>
         <div ng-show="p.type == INPUT">
@@ -37,22 +37,22 @@
               </div>
             </div>
           </form>
-        </div>
+        </div><!-- hero-unit -->
         <div ng-show="p.type == CHECK">
           <button type="button" class="btn btn-info" ng-model="i.s" btn-checkbox ng-repeat="i in page[num].items">
             {{ i.l }}
           </button>
         </div><!-- CHECK -->
         <div ng-show="p.type == SELECT">
-            <button type="button" class="btn btn-info" ng-model="page[num].value" btn-radio="i" ng-repeat="i in page[num].items">
-              {{ i }}
-            </button>
-            <div ng-show="error">
-              <div class="alert alert-error">
-                <i class="fa fa-exclamation-triangle"></i>
-                必选
-              </div>
-            </div><!-- error -->
+          <button type="button" class="btn btn-info" ng-model="page[num].value" btn-radio="i" ng-repeat="i in page[num].items">
+            {{ i }}
+          </button>
+          <div ng-show="error">
+            <div class="alert alert-error">
+              <i class="fa fa-exclamation-triangle"></i>
+              必选
+            </div>
+          </div><!-- error -->
         </div><!-- btn-group -->
         <div class="btn-group pull-right">
           <button class="btn btn-large btn-primary pull-right" ng-click="next()">
@@ -65,7 +65,7 @@
           </button>
         </div><!-- btn-group -->
       </div><!-- hero-unit -->
-      <div ng-show="p.type == END">
+      <div class="ng-hide" ng-show="p.type == END">
         <div id="container" style="min-width: 410px; max-width: 500px; height: 450px; margin: 0 auto"></div>
         <button class="btn btn-success btn-large pull-right" ng-click="num = 0">
           <i class="fa fa-reply"></i>
