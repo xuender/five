@@ -165,7 +165,10 @@ module.exports = (grunt)->
     'gh-pages':
       options:
         base: 'dist'
-      src: '**/*'
+      src: [
+        '.gitignore'
+        '**/*'
+      ]
     watch:
       html:
         files: [
