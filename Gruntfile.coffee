@@ -130,6 +130,7 @@ module.exports = (grunt)->
       index:
         files:
           'dist/js/index.min.js': [
+            'src/analytics.coffee'
             'src/data.coffee'
             'src/index.coffee'
           ]
