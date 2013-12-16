@@ -14,9 +14,17 @@ FiveCtrl = (scope, log)->
   scope.INPUT = INPUT
   scope.CHECK = CHECK
   scope.name = ''
-  scope.page = PAGE
-  scope.num = 0
-  scope.error = false
+  scope.init = ->
+    scope.page = []
+    for p in PAGE
+      if p.type == CHECK
+        p.items = p.items.sort((a, b)->
+          Math.random() - 0.5
+        )
+      scope.page.push(p)
+    scope.num = 0
+    scope.error = false
+  scope.init()
   scope.$watch 'num', (n, o)->
     scope.p = scope.page[n]
     if scope.p.type == END
