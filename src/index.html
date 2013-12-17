@@ -15,6 +15,7 @@
       <div class="hero-unit" ng-show="p.type == START">
         <h1>五行性理测试</h1>
         <p>根据王善人凤仪公的《性理集成》测试五行性理</p>
+        <div class="context"></div>
         <div class="btn-group pull-right">
           <button class="btn btn-primary btn-large" ng-click="num = 1">
             <i class="fa fa-play"></i>
@@ -25,7 +26,7 @@
       <div class="hero-unit ng-hide" ng-hide="p.type == END || p.type == START">
         <h1><span ng-show="p.type == CHECK">{{ name }}</span>{{ p.title }}</h1>
         <p>{{ p.p }}</p>
-        <div ng-show="p.type == INPUT">
+        <div ng-show="p.type == INPUT" class="row context">
           <form name="f_name">
             <input type="text" name="name" maxlength="200" placeholder="请输入..." id="i_name"
              ng-maxlength="200" ng-minlength="1" ng-model="name" required/>
@@ -33,29 +34,25 @@
               <div class="alert alert-error"  ng-show="f_name.name.$error.required">
                 <i class="fa fa-exclamation-triangle"></i>
                 必填
-              </div>
-            </div>
+              </div><!-- error -->
+            </div><!-- error -->
           </form>
-        </div><!-- hero-unit -->
-        <div ng-show="p.type == CHECK">
-          <div class="row">
-            <div class="span3" ng-repeat="i in page[num].items">
+        </div><!-- input -->
+        <div ng-show="p.type == CHECK" class="row context">
+            <div class="span2" ng-repeat="i in page[num].items">
               <label class="checkbox">
                 <input type="checkbox" ng-model="i.s"/>
                 {{ i.l }}
               </label>
             </div><!-- span -->
-          </div><!-- row -->
         </div><!-- CHECK -->
-        <div ng-show="p.type == SELECT">
-          <div class="row">
-            <div class="span3" ng-repeat="i in page[num].items">
+        <div ng-show="p.type == SELECT" class="row context">
+            <div class="span5" ng-repeat="i in page[num].items">
               <label class="radio">
                 <input type="radio" ng-model="page[num].value" value="{{ i }}"/>
                 对{{ i }}进行测试
               </label>
             </div><!-- span -->
-          </div><!-- row -->
           <div ng-show="error">
             <div class="alert alert-error">
               <i class="fa fa-exclamation-triangle"></i>
@@ -75,7 +72,7 @@
         </div><!-- btn-group -->
       </div><!-- hero-unit -->
       <div class="ng-hide" ng-show="p.type == END">
-        <div id="container" style="min-width: 410px; max-width: 500px; height: 450px; margin: 0 auto"></div>
+        <div id="container" style="min-width: 400px; max-width: 480px; height: 420px; margin: 0 auto"></div>
         <button class="btn btn-success btn-large pull-right" ng-click="init()">
           <i class="fa fa-reply"></i>
           重新开始

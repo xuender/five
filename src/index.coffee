@@ -38,6 +38,11 @@ FiveCtrl = (scope, log)->
       $('#i_name').focus()
       return
     scope.num += 1
+    for i in [scope.num..scope.page.length]
+      if scope.page[1].value == scope.page[scope.num].hide
+        scope.num += 1
+      else
+        return
 
   scope.prev = ->
     scope.num -= 1

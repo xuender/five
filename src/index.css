@@ -5,9 +5,12 @@
  * Distributed under terms of the MIT license.
  */
 body {
-  padding-top: 100px;
+  padding-top: 80px;
   background: white;
   color: black;
+}
+.context {
+  min-height: 250px;
 }
 .footer {
   text-align: center;
