@@ -8,7 +8,6 @@
     <link href="css/index.min.css" rel="stylesheet"/>
 
     <script src="js/angular.min.js"></script>
-    <script src="js/ui-bootstrap-tpls.min.js"></script>
     <title>五行性理测试</title>
   </head>
   <body>
@@ -39,14 +38,24 @@
           </form>
         </div><!-- hero-unit -->
         <div ng-show="p.type == CHECK">
-          <button type="button" class="btn btn-info" ng-model="i.s" btn-checkbox ng-repeat="i in page[num].items">
-            {{ i.l }}
-          </button>
+          <div class="row">
+            <div class="span3" ng-repeat="i in page[num].items">
+              <label class="checkbox">
+                <input type="checkbox" ng-model="i.s"/>
+                {{ i.l }}
+              </label>
+            </div><!-- span -->
+          </div><!-- row -->
         </div><!-- CHECK -->
         <div ng-show="p.type == SELECT">
-          <button type="button" class="btn btn-info" ng-model="page[num].value" btn-radio="i" ng-repeat="i in page[num].items">
-            {{ i }}
-          </button>
+          <div class="row">
+            <div class="span3" ng-repeat="i in page[num].items">
+              <label class="radio">
+                <input type="radio" ng-model="page[num].value" value="{{ i }}"/>
+                对{{ i }}进行测试
+              </label>
+            </div><!-- span -->
+          </div><!-- row -->
           <div ng-show="error">
             <div class="alert alert-error">
               <i class="fa fa-exclamation-triangle"></i>

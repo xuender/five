@@ -5,7 +5,6 @@ Copyright (C) 2013 ender xu <xuender@gmail.com>
 Distributed under terms of the MIT license.
 ###
 angular.module('five', [
-  'ui.bootstrap'
 ])
 FiveCtrl = (scope, log)->
   scope.START = START

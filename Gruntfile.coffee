@@ -76,16 +76,6 @@ module.exports = (grunt)->
           expand: true
           filter: 'isFile'
         ]
-      angularBootstrap:
-        files: [
-          cwd: 'bower_components/angular-bootstrap/'
-          src: [
-            'ui-bootstrap-tpls.min.js'
-          ]
-          dest: 'dist/js/'
-          expand: true
-          filter: 'isFile'
-        ]
       jquery:
         files: [
           cwd: 'bower_components/jquery/'
@@ -157,7 +147,10 @@ module.exports = (grunt)->
     manifest:
       options:
         basePath: 'dist/'
-        network: ['http://*', 'https://*']
+        network: [
+          'http://www.google-analytics.com/*'
+          'https://www.google-analytics.com/*'
+        ]
       index:
         src: [
           'index.html'
