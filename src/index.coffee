@@ -4,6 +4,27 @@ Copyright (C) 2013 ender xu <xuender@gmail.com>
 
 Distributed under terms of the MIT license.
 ###
+random = (items)->
+  ### 随机获取每种五行属性5-10条 ###
+  data = {}
+  for i in items
+    if i.v of data
+      data[i.v].push(i)
+    else
+      data[i.v] = [i]
+  min = 10
+  for i of data
+    if min > data[i].length
+      min = data[i].length
+  if min < 10 and min > 5
+    min = 5
+  ret = []
+  for i of data
+    ret = ret.concat(data[i][..(min - 1)])
+  ret.sort((a, b)->
+    Math.random() - 0.5
+  )
+
 angular.module('five', [
 ])
 FiveCtrl = (scope, log)->
@@ -17,9 +38,7 @@ FiveCtrl = (scope, log)->
     scope.page = []
     for p in PAGE
       if p.type == CHECK
-        p.items = p.items.sort((a, b)->
-          Math.random() - 0.5
-        )
+        p.items = random(p.items)
       scope.page.push(p)
     scope.num = 0
     scope.error = false
