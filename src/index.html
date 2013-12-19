@@ -73,6 +73,20 @@
       </div><!-- hero-unit -->
       <div class="ng-hide" ng-show="p.type == END">
         <div id="container" style="min-width: 400px; max-width: 480px; height: 420px; margin: 0 auto"></div>
+        <h3>姓名</h3>
+        {{ name }}
+        <h3>性别</h3>
+        {{ page[2].value }}
+        <h3>五行</h3>
+        {{ items[0][0] }}性偏{{ items[1][0] }}
+        <div>
+          <h2>{{ items[0][0] }}性人</h2>
+          <p ng-repeat="p in REPORT[items[0][0]].p">{{ p }}</p>
+          <h3>优点</h3>
+          <p ng-repeat="p in REPORT[items[0][0]].g">{{ p }}</p>
+          <h3>应避免的缺点</h3>
+          <p ng-repeat="p in REPORT[items[0][0]].b">{{ p }}</p>
+        </div>
         <button class="btn btn-success btn-large pull-right" ng-click="init()">
           <i class="fa fa-reply"></i>
           重新开始

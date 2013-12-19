@@ -33,6 +33,7 @@ FiveCtrl = (scope, log)->
   scope.SELECT = SELECT
   scope.INPUT = INPUT
   scope.CHECK = CHECK
+  scope.REPORT = REPORT
   scope.name = ''
   scope.init = ->
     scope.page = []
@@ -77,6 +78,15 @@ FiveCtrl = (scope, log)->
         for i in p.items
           if i['s']
             report[i.v] += 1
+    scope.items = []
+    for i of report
+      k = [i, report[i]]
+      scope.items.push(
+        k
+      )
+    scope.items.sort((a, b)->
+      b[1] > a[1]
+    )
     chartConfig =
       chart:
         polar: true
