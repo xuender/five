@@ -16,7 +16,7 @@ random = (items)->
   for i of data
     if min > data[i].length
       min = data[i].length
-  if min < 10 and min > 5
+  if min > 5
     min = 5
   ret = []
   for i of data

@@ -81,11 +81,12 @@
         {{ items[0][0] }}性偏{{ items[1][0] }}
         <div>
           <h2>{{ items[0][0] }}性人</h2>
-          <p ng-repeat="p in REPORT[items[0][0]].p">{{ p }}</p>
-          <h3>优点</h3>
+          <h3>阳{{ items[0][0] }}</h3>
+          <p ng-repeat="p in REPORT[items[0][0]].t">{{ p }}</p>
+          <h3>阴{{ items[0][0] }}</h3>
+          <p ng-repeat="p in REPORT[items[0][0]].f">{{ p }}</p>
+          <h3>治病</h3>
           <p ng-repeat="p in REPORT[items[0][0]].g">{{ p }}</p>
-          <h3>应避免的缺点</h3>
-          <p ng-repeat="p in REPORT[items[0][0]].b">{{ p }}</p>
         </div>
         <button class="btn btn-success btn-large pull-right" ng-click="init()">
           <i class="fa fa-reply"></i>
