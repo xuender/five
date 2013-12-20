@@ -55,6 +55,16 @@ module.exports = (grunt)->
           expand: true
           filter: 'isFile'
         ]
+      html5:
+        files: [
+          cwd: 'bower_components/html5shiv/dist/'
+          src: [
+            'html5shiv.js'
+          ]
+          dest: 'dist/js/'
+          expand: true
+          filter: 'isFile'
+        ]
       angular:
         files: [
           cwd: 'bower_components/angular/'
