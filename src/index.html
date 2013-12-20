@@ -36,7 +36,7 @@
         </div><!-- btn-group -->
       </div><!-- START -->
       <div class="hero-unit ng-hide" ng-hide="p.type == END || p.type == START">
-        <h1><span ng-show="p.type == CHECK">{{ name }}</span>{{ p.title }}</h1>
+        <h1><span ng-show="p.type != INPUT">{{ name }}</span>{{ p.title }}</h1>
         <p>{{ p.p }}</p>
         <div ng-show="p.type == INPUT" class="row context">
           <form name="f_name">
@@ -59,10 +59,10 @@
             </div><!-- span -->
         </div><!-- CHECK -->
         <div ng-show="p.type == SELECT" class="row context">
-            <div class="span5" ng-repeat="i in page[num].items">
+            <div class="span3" ng-repeat="i in page[num].items">
               <label class="radio">
                 <input type="radio" ng-model="page[num].value" value="{{ i }}"/>
-                对{{ i }}进行测试
+                {{ i }}
               </label>
             </div><!-- span -->
           <div ng-show="error">
