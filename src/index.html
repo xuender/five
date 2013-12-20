@@ -1,12 +1,24 @@
 <!DOCTYPE html>
-<html ng-app="five" data-ng-csp>
+<html data-ng-csp xmlns:ng="http://angularjs.org" id="ng-app" ng-app="five">
   <head>
     <meta charset="utf-8" />
     <link href="css/bootstrap.min.css" rel="stylesheet"/>
     <link href="css/font-awesome.min.css" rel="stylesheet"/>
     <link href="css/angular-csp.css" rel="stylesheet"/>
     <link href="css/index.min.css" rel="stylesheet"/>
-
+    <!--[if lte IE 8]>
+      <script src="js/json2.min.js"></script>
+      <script>
+        document.createElement('ng-include');
+        document.createElement('ng-pluralize');
+        document.createElement('ng-view');
+ 
+        // Optionally these for CSS
+        document.createElement('ng:include');
+        document.createElement('ng:pluralize');
+        document.createElement('ng:view');
+      </script>
+    <![endif]-->
     <script src="js/angular.min.js"></script>
     <title>五行性理测试</title>
   </head>

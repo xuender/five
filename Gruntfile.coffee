@@ -125,6 +125,11 @@ module.exports = (grunt)->
             'src/index.coffee'
           ]
     uglify:
+      json2:
+        files:
+          'dist/js/json2.min.js': [
+            'bower_components/json2/json2.js'
+          ]
       index:
         files:
           'dist/js/index.min.js': [

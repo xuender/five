@@ -85,7 +85,7 @@ FiveCtrl = (scope, log)->
         k
       )
     scope.items.sort((a, b)->
-      b[1] > a[1]
+      b[1] - a[1]
     )
     chartConfig =
       chart:
