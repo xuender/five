@@ -99,6 +99,10 @@
           <p ng-repeat="p in REPORT[items[0][0]].f">{{ p }}</p>
           <h3>治病</h3>
           <p ng-repeat="p in REPORT[items[0][0]].g">{{ p }}</p>
+          <div ng-show="yun">
+            <h3>{{ items[0][0] }}{{yun.y}}{{ items[1][0]}}</h3>
+            <p>{{ yun.p }}</p>
+          </div>
         </div>
         <button class="btn btn-success btn-large pull-right" ng-click="init()">
           <i class="fa fa-reply"></i>
