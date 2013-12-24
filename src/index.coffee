@@ -27,6 +27,10 @@ random = (items)->
 
 angular.module('five', [
 ])
+#  .config(($sceProvider)->
+#  $sceProvider.enabled(true)
+#)
+
 FiveCtrl = (scope, log)->
   scope.START = START
   scope.END = END

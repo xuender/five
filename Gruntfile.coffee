@@ -61,6 +61,7 @@ module.exports = (grunt)->
           cwd: 'bower_components/angular/'
           src: [
             'angular.min.js'
+            'angular.js'
             'angular.min.js.map'
           ]
           dest: 'dist/js/'
@@ -140,7 +141,7 @@ module.exports = (grunt)->
       dist:
         options:
           removeComments: true,
-          collapseWhitespace: true
+          collapseWhitespace: false
         files:
           'dist/index.html': 'src/index.html'
     cssmin:
