@@ -13,6 +13,7 @@ module.exports = (grunt)->
   grunt.loadNpmTasks 'grunt-bumpx'
   grunt.loadNpmTasks 'grunt-manifest'
   grunt.loadNpmTasks 'grunt-gh-pages'
+  grunt.loadNpmTasks 'grunt-ftp-deploy'
 
   grunt.initConfig(
     pkg:
@@ -172,6 +173,14 @@ module.exports = (grunt)->
         '.gitignore'
         '**/*'
       ]
+    'ftp-deploy':
+      dist:
+        auth:
+          host: '112.125.150.94'
+          port: 21
+          authKey: 'key1'
+        src: 'dist'
+        dest: '/five'
     watch:
       html:
         files: [
@@ -209,6 +218,7 @@ module.exports = (grunt)->
   grunt.registerTask('dist', '打包', [
     'dev'
     'uglify'
+    'ftp-deploy'
   ])
   grunt.registerTask('deploy', '发布', [
     'dist'

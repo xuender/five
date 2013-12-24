@@ -10,3 +10,4 @@ logs/
 .idea
 .zcache/
 .DS_Store
+.ftppass
