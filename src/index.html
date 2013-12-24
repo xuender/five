@@ -5,7 +5,8 @@
     <link href="css/bootstrap.min.css" rel="stylesheet"/>
     <link href="css/font-awesome.min.css" rel="stylesheet"/>
     <link href="css/angular-csp.css" rel="stylesheet"/>
-    <link href="css/index.min.css" rel="stylesheet"/>
+    <link href="css/index.min.css" rel="stylesheet" media="screen"/>
+    <link href="css/print.min.css" rel="stylesheet" media="print"/>
     <!--[if lte IE 8]>
       <script src="js/json2.min.js"></script>
       <script>
@@ -84,7 +85,7 @@
         </div><!-- btn-group -->
       </div><!-- hero-unit -->
       <div class="ng-hide" ng-show="p.type == END">
-        <div id="container" style="min-width: 400px; max-width: 480px; height: 420px; margin: 0 auto"></div>
+        <div id="container" class="pull-right" style="min-width: 400px; max-width: 480px; height: 420px; margin: 0 auto"></div>
         <h3>姓名</h3>
         {{ name }}
         <h3>性别</h3>
@@ -108,6 +109,10 @@
           <i class="fa fa-reply"></i>
           重新开始
         </button>
+        <button class="btn btn-info btn-large pull-right" ng-click="print()">
+          <i class="fa fa-print"></i>
+          打印
+        </button>
       </div><!-- END -->
     </div><!-- container -->
     <div class="footer">
@@ -119,7 +124,6 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/highcharts.js"></script>
     <script src="js/highcharts-more.js"></script>
-    <script src="js/exporting.js"></script>
     <script src="js/index.min.js"></script>
     <!--[if lt IE 9]>
       <script src="js/html5shiv.js"></script>

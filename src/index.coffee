@@ -35,6 +35,8 @@ FiveCtrl = (scope, log)->
   scope.CHECK = CHECK
   scope.REPORT = REPORT
   scope.name = ''
+  scope.print = ->
+    print()
   scope.init = ->
     scope.page = []
     for p in PAGE

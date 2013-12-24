@@ -45,16 +45,6 @@ module.exports = (grunt)->
           expand: true
           filter: 'isFile'
         ]
-      highchartsModules:
-        files: [
-          cwd: 'bower_components/highcharts/modules/'
-          src: [
-            'exporting.js'
-          ]
-          dest: 'dist/js/'
-          expand: true
-          filter: 'isFile'
-        ]
       html5:
         files: [
           cwd: 'bower_components/html5shiv/dist/'
