@@ -88,13 +88,6 @@ FiveCtrl = (scope, log)->
     scope.items.sort((a, b)->
       b[1] - a[1]
     )
-    scope.yun = false
-    if scope.items[1][0] of scope.REPORT[scope.items[0][0]]
-      item = scope.REPORT[scope.items[0][0]][scope.items[1][0]]
-      if scope.page[2].value of item
-        scope.yun = item[scope.page[2].value]
-      else
-        scope.yun = item
     chartConfig =
       chart:
         polar: true
