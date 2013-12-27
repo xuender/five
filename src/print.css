@@ -1,0 +1,20 @@
+/*
+ * print.css
+ * Copyright (C) 2013 ender xu
+ *
+ * Distributed under terms of the MIT license.
+ */
+
+body {
+  padding: 80px 50px 50px 50px;
+  background: white;
+  color: black;
+}
+.btn{
+  display:none;
+}
+.footer {
+  text-align: center;
+  padding: 30px 0;
+  margin-top: 70px;
+}

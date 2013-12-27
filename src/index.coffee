@@ -27,6 +27,10 @@ random = (items)->
 
 angular.module('five', [
 ])
+#  .config(($sceProvider)->
+#  $sceProvider.enabled(true)
+#)
+
 FiveCtrl = (scope, log)->
   scope.START = START
   scope.END = END
@@ -35,6 +39,8 @@ FiveCtrl = (scope, log)->
   scope.CHECK = CHECK
   scope.REPORT = REPORT
   scope.name = ''
+  scope.print = ->
+    print()
   scope.init = ->
     scope.page = []
     for p in PAGE

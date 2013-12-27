@@ -13,6 +13,7 @@ module.exports = (grunt)->
   grunt.loadNpmTasks 'grunt-bumpx'
   grunt.loadNpmTasks 'grunt-manifest'
   grunt.loadNpmTasks 'grunt-gh-pages'
+  grunt.loadNpmTasks 'grunt-ftp-deploy'
 
   grunt.initConfig(
     pkg:
@@ -45,16 +46,6 @@ module.exports = (grunt)->
           expand: true
           filter: 'isFile'
         ]
-      highchartsModules:
-        files: [
-          cwd: 'bower_components/highcharts/modules/'
-          src: [
-            'exporting.js'
-          ]
-          dest: 'dist/js/'
-          expand: true
-          filter: 'isFile'
-        ]
       html5:
         files: [
           cwd: 'bower_components/html5shiv/dist/'
@@ -70,6 +61,7 @@ module.exports = (grunt)->
           cwd: 'bower_components/angular/'
           src: [
             'angular.min.js'
+            'angular.js'
             'angular.min.js.map'
           ]
           dest: 'dist/js/'
@@ -149,7 +141,7 @@ module.exports = (grunt)->
       dist:
         options:
           removeComments: true,
-          collapseWhitespace: true
+          collapseWhitespace: false
         files:
           'dist/index.html': 'src/index.html'
     cssmin:
@@ -182,6 +174,14 @@ module.exports = (grunt)->
         '.gitignore'
         '**/*'
       ]
+    'ftp-deploy':
+      dist:
+        auth:
+          host: '112.125.150.94'
+          port: 21
+          authKey: 'key1'
+        src: 'dist'
+        dest: '/five'
     watch:
       html:
         files: [
@@ -219,6 +219,7 @@ module.exports = (grunt)->
   grunt.registerTask('dist', '打包', [
     'dev'
     'uglify'
+    'ftp-deploy'
   ])
   grunt.registerTask('deploy', '发布', [
     'dist'
