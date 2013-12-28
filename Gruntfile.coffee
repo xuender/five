@@ -175,13 +175,25 @@ module.exports = (grunt)->
         '**/*'
       ]
     'ftp-deploy':
+      dev:
+        auth:
+          host: '112.125.150.94'
+          port: 21
+          authKey: 'wtb'
+        src: 'dist'
+        dest: 'five'
+        exclusions: [
+          'dist/css'
+          'dist/js'
+          'dist/fonts'
+        ]
       dist:
         auth:
           host: '112.125.150.94'
           port: 21
-          authKey: 'key1'
+          authKey: 'wtb'
         src: 'dist'
-        dest: '/five'
+        dest: 'five'
     watch:
       html:
         files: [
@@ -219,7 +231,7 @@ module.exports = (grunt)->
   grunt.registerTask('dist', '打包', [
     'dev'
     'uglify'
-    'ftp-deploy'
+    'ftp-deploy:dist'
   ])
   grunt.registerTask('deploy', '发布', [
     'dist'
