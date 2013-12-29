@@ -35,17 +35,6 @@ module.exports = (grunt)->
           expand: true
           filter: 'isFile'
         ]
-      highcharts:
-        files: [
-          cwd: 'bower_components/highcharts/'
-          src: [
-            'highcharts.js'
-            'highcharts-more.js'
-          ]
-          dest: 'dist/js/'
-          expand: true
-          filter: 'isFile'
-        ]
       html5:
         files: [
           cwd: 'bower_components/html5shiv/dist/'
@@ -53,66 +42,6 @@ module.exports = (grunt)->
             'html5shiv.js'
           ]
           dest: 'dist/js/'
-          expand: true
-          filter: 'isFile'
-        ]
-      angular:
-        files: [
-          cwd: 'bower_components/angular/'
-          src: [
-            'angular.min.js'
-            'angular.js'
-            'angular.min.js.map'
-          ]
-          dest: 'dist/js/'
-          expand: true
-          filter: 'isFile'
-        ]
-      angularCss:
-        files: [
-          cwd: 'bower_components/angular/'
-          src: [
-            'angular-csp.css'
-          ]
-          dest: 'dist/css/'
-          expand: true
-          filter: 'isFile'
-        ]
-      jquery:
-        files: [
-          cwd: 'bower_components/jquery/'
-          src: [
-            'jquery.min.js'
-            'jquery.min.map'
-          ]
-          dest: 'dist/js/'
-          expand: true
-          filter: 'isFile'
-        ]
-      font:
-        # font-awesome
-        files: [
-          cwd: 'bower_components/font-awesome/'
-          src: [
-            'css/font-awesome.min.css'
-            'fonts/fontawesome-webfont.eot'
-            'fonts/fontawesome-webfont.svg'
-            'fonts/fontawesome-webfont.ttf'
-            'fonts/fontawesome-webfont.woff'
-          ]
-          dest: 'dist'
-          expand: true
-          filter: 'isFile'
-        ]
-      bootstrap:
-        # bootstrap 2.3.2
-        files: [
-          cwd: 'bower_components/bootstrap/bootstrap/'
-          src: [
-            'css/bootstrap.min.css'
-            'js/bootstrap.min.js'
-          ]
-          dest: 'dist'
           expand: true
           filter: 'isFile'
         ]
@@ -175,13 +104,25 @@ module.exports = (grunt)->
         '**/*'
       ]
     'ftp-deploy':
+      dev:
+        auth:
+          host: '112.125.150.94'
+          port: 21
+          authKey: 'wtb'
+        src: 'dist'
+        dest: 'five'
+        exclusions: [
+          'dist/css'
+          'dist/js'
+          'dist/fonts'
+        ]
       dist:
         auth:
           host: '112.125.150.94'
           port: 21
-          authKey: 'key1'
+          authKey: 'wtb'
         src: 'dist'
-        dest: '/five'
+        dest: 'five'
     watch:
       html:
         files: [
@@ -219,7 +160,7 @@ module.exports = (grunt)->
   grunt.registerTask('dist', '打包', [
     'dev'
     'uglify'
-    'ftp-deploy'
+    'ftp-deploy:dist'
   ])
   grunt.registerTask('deploy', '发布', [
     'dist'
