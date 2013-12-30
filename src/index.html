@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="http://libs.baidu.com/bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="http://libs.baidu.com/fontawesome/4.0.3/css/font-awesome.min.css" rel="stylesheet"/>
 
     <link href="css/index.min.css" rel="stylesheet" media="screen"/>
@@ -100,8 +100,15 @@
           <p ng-repeat="p in REPORT[items[0][0]].t">{{ p }}</p>
           <h3>阴{{ items[0][0] }}</h3>
           <p ng-repeat="p in REPORT[items[0][0]].f">{{ p }}</p>
-          <h3>治病</h3>
           <p ng-repeat="p in REPORT[items[0][0]].g">{{ p }}</p>
+          <div ng-show="yun">
+            <h3>{{ items[0][0] }}{{yun.y}}{{ items[1][0]}}</h3>
+            <p>{{ yun.p }}</p>
+          </div>
+          <div ng-show="cp">
+            <h3>{{ items[0][0] }}性人面色{{ color }}</h3>
+            <p>{{ cp }}</p>
+          </div>
         </div>
         <button class="btn btn-success btn-large pull-right" ng-click="init()">
           <i class="fa fa-reply"></i>

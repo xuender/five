@@ -88,6 +88,24 @@ FiveCtrl = (scope, log)->
     scope.items.sort((a, b)->
       b[1] - a[1]
     )
+    scope.yun = false
+    if scope.items[1][0] of scope.REPORT[scope.items[0][0]]
+      item = scope.REPORT[scope.items[0][0]][scope.items[1][0]]
+      if scope.page[2].value of item
+        scope.yun = item[scope.page[2].value]
+      else
+        scope.yun = item
+
+    scope.color = false
+    for i in scope.page[4].items
+      if i.s
+        for c in ['青', '红', '白', '黑']
+          scope.color = if c in i.l then c else scope.color
+    if scope.color of scope.REPORT[scope.items[0][0]]['c']
+      scope.cp = scope.REPORT[scope.items[0][0]]['c'][scope.color]
+    else
+      scope.cp = false
+
     chartConfig =
       chart:
         polar: true
