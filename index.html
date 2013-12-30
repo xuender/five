@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/font-awesome.min.css" rel="stylesheet">
-    <link href="css/angular-csp.css" rel="stylesheet">
+    <link href="http://libs.baidu.com/bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://libs.baidu.com/fontawesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+
     <link href="css/index.min.css" rel="stylesheet" media="screen">
     <link href="css/print.min.css" rel="stylesheet" media="print">
     <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge" /><![endif]-->
@@ -20,7 +20,7 @@
         document.createElement('ng:pluralize');
         document.createElement('ng:view');
       </script><![endif]-->
-    <script src="js/angular.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular.min.js"></script>
     <title>五行性理测试</title>
   </head>
   <body>
@@ -97,11 +97,14 @@
           <p ng-repeat="p in REPORT[items[0][0]].t">{{ p }}</p>
           <h3>阴{{ items[0][0] }}</h3>
           <p ng-repeat="p in REPORT[items[0][0]].f">{{ p }}</p>
-          <h3>治病</h3>
           <p ng-repeat="p in REPORT[items[0][0]].g">{{ p }}</p>
           <div ng-show="yun">
             <h3>{{ items[0][0] }}{{yun.y}}{{ items[1][0]}}</h3>
             <p>{{ yun.p }}</p>
+          </div>
+          <div ng-show="cp">
+            <h3>{{ items[0][0] }}性人面色{{ color }}</h3>
+            <p>{{ cp }}</p>
           </div>
         </div>
         <button class="btn btn-success btn-large pull-right" ng-click="init()">
@@ -120,10 +123,10 @@
         http://www.wtb21.com/
       </a>
     </div>
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/highcharts.js"></script>
-    <script src="js/highcharts-more.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://libs.baidu.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    <script src="http://code.highcharts.com/3.0.7/highcharts.js"></script>
+    <script src="http://code.highcharts.com/3.0.7/highcharts-more.js"></script>
     <script src="js/index.min.js"></script>
     <!--[if lt IE 9]><script src="js/html5shiv.js"></script><![endif]-->
   </body>
